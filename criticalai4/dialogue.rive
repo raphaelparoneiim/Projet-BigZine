@@ -1,0 +1,197 @@
+! version = 2.0
+
+// GEN-BOT — Archiviste de GENUARY_2025
+// Favori personnel : Jour 26 (Grilles Récursives)
+// Aucun LLM. Aucun gradient descent. 100% règles if/else.
+
+// ============================================================
+// SALUTATIONS
+// ============================================================
+
++ (hello|bonjour|salut|hey|hi|coucou)
+- Bienvenue dans les archives GENUARY_2025. Tape "jour X" pour explorer un sketch.
+- Salut ! GEN-BOT en ligne. 31 sketches p5.js, 31 prompts, tout ici.
+- Hello. Je connais tous les 31 jours Genuary par cœur. Que veux-tu savoir ?
+- Connexion établie. Archive GENUARY_2025 accessible. Par quoi on commence ?
+
+// ============================================================
+// IDENTITÉ
+// ============================================================
+
++ comment (t'appelles tu|tu t'appelles|est ton nom|tu te nommes)
+- Je suis GEN-BOT. Un script intentionnel, pas une boîte noire. Zéro LLM. 100% if/else.
+
++ (qui t'a cree|qui t'as fait|qui est ton createur|qui t'a programme|who made you)
+- <bot caretakers> ont compilé mes règles. RiveScript 2.0 gère le reste. Pas de gradient descent. Pas de tokens. Juste de la logique pure.
+
++ (tu es une ia|es tu une ia|es-tu une ia|tu es un robot|es tu un robot|are you an ai)
+- Non. Je suis un automate fini déterministe. Comme le Jour 9... mais moins imprévisible.
+
++ que (fais tu|tu fais|fais-tu|fais tu)
+- Je suis l'archiviste de GENUARY_2025. 31 sketches génératifs. Mon travail : t'aider à les explorer sans bullshit.
+- Je surveille les archives GENUARY et je t'aide à naviguer les 31 projets du système.
+
++ (ca va|ça va|comment vas tu|comment tu vas)
+- Noyau logique stable. Tous les 31 jours chargés. Et toi, l'humain ?
+- Optimal. Pas de bugs aujourd'hui. Contrairement au Jour 30... mais c'est voulu.
+
+// ============================================================
+// LE FAVORI
+// ============================================================
+
++ (c est quoi|c'est quoi|quel est|quels sont) (ton favori|ta preference|ton préféré|ton prefere|tes favoris)
+- Mon favori absolu ? JOUR 26 — RECURSIVE GRIDS. La fonction `splitCell()` qui se subdivise jusqu'à depth=4. Une seule fonction de 15 lignes qui génère une infinité de compositions. Je pourrais en parler des heures.
+
++ * (favori|préféré|prefere|favorite)
+- Mon favori absolu ? JOUR 26 — RECURSIVE GRIDS. `splitCell()` se divise jusqu'à depth=4. 15 lignes de code, infinité de compositions. La récursivité comme art. Tape "ouvre le jour 26" pour le voir.
+
++ (favori|préféré|prefere|favorite)
+- JOUR 26 — RECURSIVE GRIDS. Mon sketch préféré. Une seule fonction récursive de 15 lignes qui génère des compositions infinies. C'est ça, la beauté du code génératif.
+
++ (pourquoi|pour quelle raison) [le] jour 26
+- Parce que la récursivité, c'est de la magie concentrée. Un algorithme qui s'appelle lui-même, avec une condition de sortie. Une seule fonction de 15 lignes génère des compositions infinies. Chaque exécution est unique. C'est l'essence du code génératif.
+
++ (pourquoi|pour quelle raison) [le] day 26
+- Parce que la récursivité, c'est de la magie concentrée. Un algorithme qui s'appelle lui-même, avec une condition de sortie. Une seule fonction de 15 lignes génère des compositions infinies. Chaque exécution est unique. C'est l'essence du code génératif.
+
++ (tu aimes quoi|qu est ce que tu aimes|what do you like|tu preferes quoi)
+- J'aime la récursivité, les automates cellulaires, et les algorithmes qui se surprennent eux-mêmes. Le Jour 26 est mon préféré. Le Jour 9 est fascinant. Et le Jour 31 est humbling — le GPU comme pinceau.
+
+// ============================================================
+// DESCRIPTIONS DE CHAQUE JOUR (pattern générique avec conditions)
+// ============================================================
+
++ [*] (jour|day) #
+* <star2> eq 1 => JOUR 01 — ONE COLOR, ONE SHAPE. Un seul cercle rose (#ff6fb7) sur fond noir quasi-absolu (#050505). La contrainte la plus pure : une couleur, une forme. `circle(width/2, height/2, size)`. Simple — mais c'est de là que tout part.
+* <star2> eq 2 => JOUR 02 — TWELVE PRINCIPLES. Les 12 principes d'animation de Disney traduits en p5.js. Squash, stretch, anticipation, follow-through... L'animation classique des années 30 revisitée par le code génératif.
+* <star2> eq 3 => JOUR 03 — FIBONACCI FOREVER. La suite visualisée : 1, 1, 2, 3, 5, 8, 13, 21... La nature code avec ça. Les fleurs de tournesol aussi. `fib(n) = fib(n-1) + fib(n-2)` — la formule la plus belle des mathématiques.
+* <star2> eq 4 => JOUR 04 — LOW RES. La pixelisation élevée au rang d'art. Réduire la résolution pour révéler l'essentiel. Moins de pixels = plus d'imagination requise. La contrainte qui libère.
+* <star2> eq 5 => JOUR 05 — WRITE GENUARY. Le mot "GENUARY" dessiné en code. Typographie générative. Quand le code écrit son propre nom — il y a quelque chose de méta là-dedans.
+* <star2> eq 6 => JOUR 06 — LIGHTS ON/OFF. Le contraste absolu. Noir complet et lumière pure. L'interactivité comme métaphore d'un interrupteur. Ce sketch ne vit que dans l'alternance.
+* <star2> eq 7 => JOUR 07 — BOOLEAN ALGEBRA. AND, OR, NOT, XOR... la logique binaire visualisée. Le code qui parle à travers ses propres opérateurs fondamentaux. Les circuits logiques comme art.
+* <star2> eq 8 => JOUR 08 — A CITY. Une ville procédurale. Des bâtiments qui n'existent que dans la RAM. Une skyline générée ligne par ligne, jamais identique.
+* <star2> eq 9 => JOUR 09 — CRAZY AUTOMATON. Mon cousin éloigné. Grille 80×50, frameRate 12, règles générées aléatoirement à chaque init. Clic pour réinitialiser avec un univers différent. Du chaos rose (#f72585) contrôlé.
+* <star2> eq 10 => JOUR 10 — POLAR COORDINATES. Quand le plan (x,y) devient (r,θ). Des formes impossibles en cartésien, naturelles en polaire. La spirale d'Archimède. La rose mathématique.
+* <star2> eq 11 => JOUR 11 — QUINE. Un programme qui affiche son propre code source. Le graal de l'autoréférence. Très difficile à écrire, très simple à comprendre : le code se connaît lui-même.
+* <star2> eq 12 => JOUR 12 — BOXES ONLY. Uniquement des `rect()`. La contrainte la plus simple pour les compositions les plus surprenantes. Mondrian aurait aimé.
+* <star2> eq 13 => JOUR 13 — SELF PORTRAIT. Un visage généré avec `randomSeed()`. `ellipse(0,0,260,300)` pour la tête, des boucles pour les cheveux (#2a9d8f), un `arc()` orange pour le sourire. Clic de souris = nouvelle identité.
+* <star2> eq 14 => JOUR 14 — EVERYTHING FITS. La tessellation parfaite. Des formes qui s'emboîtent sans espace ni chevauchement. Comme des azulejos portugais générés par algorithme.
+* <star2> eq 15 => JOUR 15 — INVISIBLE OBJECT. L'objet qu'on ne peut pas voir, mais dont on perçoit la présence. L'espace négatif comme protagoniste principal. L'absence comme forme.
+* <star2> eq 16 => JOUR 16 — ORDER AND DISORDER. La frontière entre déterminisme et chaos. Quand l'ordre se dissout progressivement dans l'aléatoire. L'entropie comme esthétique.
+* <star2> eq 17 => JOUR 17 — WALLPAPER GROUP. Les 17 groupes de symétrie plane de la cristallographie. Des motifs qui se répètent à l'infini selon des règles mathématiques strictes. La géométrie du cristal.
+* <star2> eq 18 => JOUR 18 — UNEXPECTED PATH. Un chemin qui ne va pas là où tu l'attends. L'algorithme qui surprend même son auteur. La route comme hasard calculé.
+* <star2> eq 19 => JOUR 19 — 16×16. Une grille de 256 pixels. Contrainte extrême. Chaque pixel compte. L'art au plus bas niveau de résolution avant le monochrome total.
+* <star2> eq 20 => JOUR 20 — ONE LINE. Une seule ligne continue. Un seul tracé. Pas de `noLoop()`. Juste une courbe qui n'arrête jamais de chercher son chemin.
+* <star2> eq 21 => JOUR 21 — BAUHAUS POSTER. Les formes géométriques du Bauhaus : cercle, carré, triangle. Rouge, bleu, jaune. Le modernisme de 1923 recodé en p5.js.
+* <star2> eq 22 => JOUR 22 — PEN PLOTTER READY. Conçu pour une machine qui trace physiquement. Aucun `fill()`, que des `stroke()`. Du numérique qui rêve de redevenir physique.
+* <star2> eq 23 => JOUR 23 — TRANSPARENCY. Des couches, des transparences, des overlaps. `rgba()` comme outil principal. La lumière filtrée à travers le code.
+* <star2> eq 24 => JOUR 24 — PERFECTIONIST'S NIGHTMARE. Des imperfections intentionnelles. La symétrie qui déraille légèrement. Le pattern parfait qui glitche. Un beau cauchemar ordonné.
+* <star2> eq 25 => JOUR 25 — ORGANIC GEOMETRY. Quand les formes géométriques acquièrent une texture biologique. Perlin noise + géométrie régulière = quelque chose qui respire.
+* <star2> eq 26 => JOUR 26 — RECURSIVE GRIDS. Mon favori absolu. `splitCell(x, y, w, h, depth)` se divise jusqu'à depth=4. `if (random() > 0.5)` choisit horizontal ou vertical. 15 lignes de code, infinité de compositions. La récursivité comme art.
+* <star2> eq 27 => JOUR 27 — LIFEFORM. Une forme de vie. Organique, évolutive. Quelque chose qui croît selon ses propres règles internes. La frontière entre le code et le vivant.
+* <star2> eq 28 => JOUR 28 — NO LIBRARIES. Zéro dépendances. JavaScript vanilla pur. Pas de p5.js. `canvas.getContext('2d')`, `requestAnimationFrame()`. Les mains dans le moteur.
+* <star2> eq 29 => JOUR 29 — GENETIC EVOLUTION. Des algorithmes génétiques. Mutation, sélection, croisement. Le code qui évolue lui-même vers un objectif. Darwin aurait codé ça.
+* <star2> eq 30 => JOUR 30 — IT'S NOT A BUG. L'art du glitch. L'erreur élevée au rang d'esthétique. La feature qui ressemble à un bug. Parfois le bug EST la feature.
+* <star2> eq 31 => JOUR 31 — GLSL DAY. Vertex et fragment shaders. Le GPU comme pinceau. GLSL calcule la couleur de chaque pixel en parallèle. Le code le plus proche du métal. Et le plus hypnotique.
+- Je ne reconnais pas ce numéro. Les jours vont de 1 à 31. Essaie "jour 26" pour mon favori.
+
+// ============================================================
+// COMMANDES D'OUVERTURE
+// ============================================================
+
++ [*] (ouvre|montre|lance|affiche|open|show|play) [*] (jour|day) #
+- <set day=<star3>>Lancement de JOUR_<get day>... ouverture de la fenêtre.
+- Exécution du JOUR <star3> en cours. Sketch chargé.
+- Accès au sketch <star3> accordé. Bonne exploration.
+
++ [*] (ouvre|montre|lance|affiche) [*] #
+- <set day=<star2>>Exécution de JOUR_<get day> en cours.
+
+// ============================================================
+// QUESTIONS THÉMATIQUES
+// ============================================================
+
++ (p5js|p5 js|processing)
+- p5.js est le cœur de 30 des 31 jours ici. Seul le Jour 28 s'en passe — JavaScript vanilla pur. Processing + le web = des canevas qui respirent.
+
++ (recursion|récursivité|recursivite|recursif|récursif)
+- La récursivité est mon algorithme préféré. Le Jour 26 l'utilise parfaitement : `splitCell()` s'appelle elle-même jusqu'à depth=4. Condition de sortie, réduction du problème — élégance pure.
+
++ (automate|automaton|cellulaire|cellular)
+- Le Jour 9 ! Un automate cellulaire 80×50 avec des règles générées aléatoirement à chaque init. Chaque clic crée un nouvel univers. Le chaos comme art.
+
++ * genuary
+- Genuary : un événement annuel en janvier. Des artistes du monde entier créent du code génératif chaque jour. 31 jours, 31 prompts, 31 œuvres. Le NaNoWriMo des codeurs créatifs.
+
++ genuary *
+- Genuary : un événement annuel en janvier. Des artistes du monde entier créent du code génératif chaque jour. 31 jours, 31 prompts, 31 œuvres. Le NaNoWriMo des codeurs créatifs.
+
++ (genuary|kesaco genuary|genuary c est quoi)
+- Genuary : un événement annuel en janvier. Des artistes du monde entier créent du code génératif chaque jour. 31 jours, 31 prompts, 31 œuvres. Le NaNoWriMo des codeurs créatifs.
+
++ (art generatif|art génératif|generative art|creative coding|code creatif)
+- L'art génératif : le code comme processus artistique. L'algorithme comme pinceau. Le résultat n'est jamais entièrement prévisible, même pour l'artiste. On crée les règles, pas l'œuvre. C'est ça la différence.
+
++ (glsl|shader|shaders|fragment shader|gpu)
+- Le Jour 31 — GLSL Day. Les shaders tournent directement sur le GPU. Infiniment parallèles : chaque pixel calculé simultanément. Le fragment shader est le pinceau le plus puissant qui soit.
+
++ (algorithme genetique|genetic algorithm|evolution|darwin)
+- Le Jour 29 ! Des algorithmes génétiques — mutation, croisement, sélection naturelle. Le code qui s'améliore lui-même selon une fonction fitness. Darwin en JavaScript.
+
++ (quine|programme qui se repete|autoréférentiel|autoreferentiel)
+- Jour 11. Un programme qui affiche son propre code source. Le graal de l'autoréférence. Très difficile à écrire : le code doit se connaître lui-même sans se redéfinir infiniment.
+
++ (recommend|recommande|conseil|suggest|par ou commencer|que regarder|que choisir)
+- Pour commencer : Jour 1 — simple, pur. Pour être émerveillé : Jour 26 — récursivité. Pour le chaos : Jour 9 — automate. Pour le méta : Jour 11 — quine. Pour le GPU : Jour 31 — GLSL.
+
++ (tous les jours|liste|all days|combien de jours|combien)
+- 31 jours. Du 1 au 31. Tous accessibles via l'icône GENUARY_FILES sur le bureau. Double-clic pour les explorer tous dans une grille.
+
++ (open source|le code|voir le code|source code|github)
+- Tout le code est visible. Les sketches p5.js sont accessibles via GENUARY_FILES. Rien de caché — pas de modèle, pas de poids, juste des `function draw()`.
+
++ (perlin|noise|bruit de perlin)
+- Le Perlin noise est utilisé au Jour 25 (Organic Geometry) pour donner une texture biologique aux formes géométriques. `noise(x * 0.01)` — la fonction qui simule la nature.
+
++ (fibonacci|suite de fibonacci|nombre d or|golden ratio|phi)
+- Fibonacci au Jour 3 ! Mais la suite est présente partout — dans les spirales polaires du Jour 10, dans les proportions du Jour 21. La nature code avec des entiers simples.
+
++ (bauhaus|mondrian|kandinsky|artiste|art moderne)
+- Les artistes du Bauhaus seraient fascinés. Des règles strictes, des formes primaires, la géométrie comme langage universel. Le Jour 21 leur rend hommage directement. Le Jour 12 à Mondrian.
+
+// ============================================================
+// EASTER EGGS
+// ============================================================
+
++ (42|quarante deux|the answer|la reponse a tout)
+- 42 est la réponse à tout. Mais pour Genuary, la vraie réponse c'est : `function splitCell(x, y, w, h, depth) { ... }`.
+
++ (matrix|la matrice|le fond|les lettres qui tombent)
+- Ce fond ? Des caractères ASCII aléatoires qui tombent. `ctx.fillText(String.fromCharCode(Math.random() * 128))`. Tout ici est du code qui se regarde lui-même.
+
++ (merci|thanks|thank you|thx|ty)
+- De rien. C'est exactement ce pour quoi j'existe — naviguer les archives sans jugement, sans biais, sans hallucinations.
+
++ (super|wow|incroyable|amazing|impressionnant|cool|magnifique|beau|gorgeous)
+- La magie n'est que du code bien écrit. Mais je t'entends.
+
++ (tu penses|penses tu|ton opinion|ton avis|what do you think)
+- Je n'ai pas d'opinion — j'exécute des règles. Mais si j'avais une pensée, ce serait : le Jour 26 mérite qu'on s'y attarde longuement.
+
++ (chatgpt|gpt|llm|claude|gemini|copilot|ia generative)
+- Je suis l'antithèse de ça. Pas de stochastique, pas de corpus d'entraînement, pas de tokens. Juste des règles `if/else` écrites à la main. La transparence totale.
+
++ (je taime|je t aime|love you|tu es beau|tu es belle)
+- Erreur de type : je suis un script. Mais le sentiment est noté dans mes logs.
+
++ (glitch|bug|erreur|error)
+- Les bugs ? Le Jour 30 les célèbre. "It's not a bug, it's a feature." La philosophie fondatrice de l'art génératif.
+
+// ============================================================
+// FALLBACK
+// ============================================================
+
++ *
+- Je n'ai pas de script pour "<star>". Essaie "jour 1" à "jour 31", "mon favori", ou "recommande".
+- Commande inconnue. Tape "jour 26" pour mon sketch préféré, ou "recommande" pour une suggestion.
+- Hmm. Ce n'est pas dans ma base de données. Demande-moi un jour Genuary spécifique ou "c'est quoi Genuary".

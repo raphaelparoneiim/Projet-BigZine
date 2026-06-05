@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PROJECT.exe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      :root { --green: #00ff41; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        background: #000;
+        color: var(--green);
+        font-family: "Fira Code", monospace;
+        font-size: 13px;
+        line-height: 1.9;
+        padding: 30px;
+        min-height: 100vh;
+      }
+      h1 {
+        font-size: 20px;
+        letter-spacing: 3px;
+        border-bottom: 1px solid var(--green);
+        padding-bottom: 10px;
+        margin-bottom: 24px;
+      }
+      h2 {
+        font-size: 13px;
+        letter-spacing: 2px;
+        color: #888;
+        text-transform: uppercase;
+        margin: 20px 0 8px;
+      }
+      p { color: var(--green); margin-bottom: 10px; }
+      .tag {
+        display: inline-block;
+        border: 1px solid var(--green);
+        padding: 2px 8px;
+        margin: 3px 3px 3px 0;
+        font-size: 11px;
+      }
+      .day-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 6px;
+        margin-top: 8px;
+      }
+      .day-item {
+        border: 1px solid #003300;
+        padding: 5px 8px;
+        font-size: 11px;
+        color: #00cc33;
+      }
+      .day-item span { color: #888; margin-right: 6px; }
+      .bar {
+        height: 2px;
+        background: var(--green);
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>// PROJET_GENUARY_2026.txt</h1>
+
+    <h2>description</h2>
+    <p>
+      Genuary est un événement mondial annuel où des artistes et des développeurs
+      créent une œuvre générée par code chaque jour du mois de janvier.
+      Chaque jour propose une contrainte créative différente.
+    </p>
+    <p>
+      Ce projet regroupe 31 sketches p5.js réalisés en janvier 2026,
+      chacun explorant une contrainte unique — de la géométrie pure au GLSL,
+      en passant par les automates cellulaires et les affiches Bauhaus.
+    </p>
+
+    <div class="bar"></div>
+
+    <h2>technologies utilisées</h2>
+    <div>
+      <span class="tag">p5.js</span>
+      <span class="tag">GLSL / WebGL</span>
+      <span class="tag">HTML5 Canvas</span>
+      <span class="tag">JavaScript ES6</span>
+      <span class="tag">CSS3</span>
+    </div>
+
+    <div class="bar"></div>
+
+    <h2>les 31 jours</h2>
+    <div class="day-list">
+      <div class="day-item"><span>01</span>One Color One Shape</div>
+      <div class="day-item"><span>02</span>Twelve Principles</div>
+      <div class="day-item"><span>03</span>Fibonacci Forever</div>
+      <div class="day-item"><span>04</span>Low Res</div>
+      <div class="day-item"><span>05</span>Write Genuary</div>
+      <div class="day-item"><span>06</span>Lights On/Off</div>
+      <div class="day-item"><span>07</span>Boolean Algebra</div>
+      <div class="day-item"><span>08</span>A City</div>
+      <div class="day-item"><span>09</span>Crazy Automaton</div>
+      <div class="day-item"><span>10</span>Polar Coordinates</div>
+      <div class="day-item"><span>11</span>Quine</div>
+      <div class="day-item"><span>12</span>Boxes Only</div>
+      <div class="day-item"><span>13</span>Self Portrait</div>
+      <div class="day-item"><span>14</span>Everything Fits</div>
+      <div class="day-item"><span>15</span>Invisible Object</div>
+      <div class="day-item"><span>16</span>Order &amp; Disorder</div>
+      <div class="day-item"><span>17</span>Wallpaper Group</div>
+      <div class="day-item"><span>18</span>Unexpected Path</div>
+      <div class="day-item"><span>19</span>16×16</div>
+      <div class="day-item"><span>20</span>One Line</div>
+      <div class="day-item"><span>21</span>Bauhaus Poster</div>
+      <div class="day-item"><span>22</span>Pen Plotter Ready</div>
+      <div class="day-item"><span>23</span>Transparency</div>
+      <div class="day-item"><span>24</span>Perfectionist's Nightmare</div>
+      <div class="day-item"><span>25</span>Organic Geometry</div>
+      <div class="day-item"><span>26</span>Recursive Grids</div>
+      <div class="day-item"><span>27</span>Lifeform</div>
+      <div class="day-item"><span>28</span>No Libraries</div>
+      <div class="day-item"><span>29</span>Genetic Evolution</div>
+      <div class="day-item"><span>30</span>It's Not a Bug</div>
+      <div class="day-item"><span>31</span>GLSL Day</div>
+    </div>
+
+    <div class="bar"></div>
+
+    <h2>contexte</h2>
+    <p>Réalisé dans le cadre du cours de design numérique, 2026.</p>
+    <p>Auteur : Raphael Parone</p>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>GEN-BOT</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src="https://unpkg.com/rivescript@latest/dist/rivescript.min.js"></script>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div id="chat-logs" class="logs">
+        <div class="msg bot intro">
+          <small>GEN-BOT v4.0 // ARCHIVE_GENUARY_2025</small>
+          <p>Système initialisé. Je suis l'archiviste de ces 31 sketches génératifs.</p>
+          <p>Aucun LLM. Aucune hallucination. Juste des règles if/else.</p>
+          <br />
+          <span class="tag">JOUR X</span>
+          <span class="tag">OUVRE LE JOUR X</span>
+          <span class="tag">MON FAVORI</span>
+          <span class="tag">RECOMMANDE</span>
+          <span class="tag">C'EST QUOI GENUARY</span>
+        </div>
+      </div>
+      <div class="input-area">
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Tape 'jour 26' ou 'recommande'..."
+          autofocus
+        />
+        <button id="send-btn">SEND</button>
+      </div>
+    </div>
+    <script src="sketch.js"></script>
+  </body>
+</html>

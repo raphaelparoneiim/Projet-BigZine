@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  font-family: "Courier New", monospace;
+  color: #00ff41;
+  height: 100vh;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.logs {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid #003300;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: rgba(0, 15, 0, 0.4);
+  scrollbar-width: thin;
+  scrollbar-color: #003300 #000;
+}
+
+.logs::-webkit-scrollbar {
+  width: 4px;
+}
+.logs::-webkit-scrollbar-track {
+  background: #000;
+}
+.logs::-webkit-scrollbar-thumb {
+  background: #003300;
+}
+
+.msg {
+  margin-bottom: 14px;
+  border-left: 2px solid #003300;
+  padding-left: 10px;
+}
+
+.msg.user {
+  border-left-color: #004466;
+}
+
+.msg small {
+  font-size: 9px;
+  color: #006600;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.msg.user small {
+  color: #0088aa;
+}
+
+.msg p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.msg.user p {
+  color: #aaddff;
+}
+
+/* Typing animation */
+.typing p.dots span {
+  display: inline-block;
+  opacity: 0.2;
+  animation: blink 1.2s infinite;
+}
+.typing p.dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing p.dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+@keyframes blink {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 1; }
+}
+
+/* Intro block */
+.msg.intro {
+  border-left-color: #005500;
+  background: rgba(0, 30, 0, 0.3);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.msg.intro p {
+  color: #88ff88;
+  font-size: 11px;
+}
+.msg.intro .tag {
+  display: inline-block;
+  border: 1px solid #005500;
+  padding: 1px 6px;
+  font-size: 9px;
+  margin: 2px 2px 6px 0;
+  color: #00bb44;
+}
+
+.input-area {
+  display: flex;
+  gap: 5px;
+  height: 35px;
+}
+
+input {
+  flex: 1;
+  background: #000;
+  border: 1px solid #00ff41;
+  color: #00ff41;
+  padding: 0 10px;
+  font-family: inherit;
+  font-size: 12px;
+  outline: none;
+}
+
+input::placeholder {
+  color: #004400;
+  font-style: italic;
+}
+
+button {
+  background: #00ff41;
+  color: #000;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  background: #88ff88;
+}
+
+button:active {
+  background: #fff;
+}

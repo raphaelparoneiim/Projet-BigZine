@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QR_CODE.exe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+      :root { --green: #00ff41; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        background: #000;
+        color: var(--green);
+        font-family: "Fira Code", monospace;
+        font-size: 13px;
+        line-height: 1.8;
+        padding: 30px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+      }
+      h1 {
+        font-size: 16px;
+        letter-spacing: 3px;
+        text-align: center;
+      }
+      #qrcode {
+        padding: 12px;
+        background: #fff;
+        display: inline-block;
+      }
+      #qrcode canvas, #qrcode img { display: block; }
+      .url {
+        font-size: 11px;
+        color: #888;
+        word-break: break-all;
+        text-align: center;
+        max-width: 300px;
+      }
+      .label {
+        font-size: 11px;
+        letter-spacing: 2px;
+        color: #888;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .blink { animation: blink 1s step-end infinite; }
+      @keyframes blink { 50% { opacity: 0; } }
+    </style>
+  </head>
+  <body>
+    <h1>// LIVE_SITE_QR.exe</h1>
+    <div class="label">Scanner pour accéder au site</div>
+    <div id="qrcode"></div>
+    <div class="url" id="site-url"></div>
+    <div class="label">Raphael Parone — Genuary 2026<span class="blink">_</span></div>
+
+    <script>
+      const siteUrl = "https://raphaelparone.github.io/bigzine/";
+      document.getElementById("site-url").textContent = siteUrl;
+      new QRCode(document.getElementById("qrcode"), {
+        text: siteUrl,
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H,
+      });
+    </script>
+  </body>
+</html>

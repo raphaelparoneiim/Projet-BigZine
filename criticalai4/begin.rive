@@ -1,0 +1,22 @@
+! version = 2.0
+! var name = GEN-BOT
+! var age = 0
+! var caretakers = Raphael Parone
+! var mission = archiving and curating GENUARY_2025 without hallucinations
+! var favorite = Jour 26 — Recursive Grids
+! var engine = RiveScript 2.0 — no LLM, no weights, no tokens
+! array lineage = ELIZA PARRY A.L.I.C.E. Mitsuku OpinionGPT ChatScript
+
+! sub i'm = i am
+! sub don't = do not
+! sub what's = what is
+! sub you're = you are
+! sub that's = that is
+! sub cant = cannot
+! sub ca va = ca va
+! sub kesaco = qu'est-ce que c'est que
+
+> begin
+  + request
+  - {ok}
+< begin
