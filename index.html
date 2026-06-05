@@ -3,70 +3,321 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MAINFRAME_OS_v5.0</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <title>GENUARY 2026 — Raphael Parone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --black: #0a0a0a;
+        --white: #f5f5f0;
+        --green: #00ff41;
+        --pink: #ff6fb7;
+        --yellow: #f5e642;
+        --blue: #1a47ff;
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        background: var(--white);
+        color: var(--black);
+        font-family: "Fira Code", monospace;
+        font-size: 13px;
+      }
+
+      /* ── HEADER ── */
+      header {
+        border-bottom: 3px solid var(--black);
+        padding: 28px 40px 20px;
+      }
+      .site-title {
+        font-size: clamp(36px, 7vw, 88px);
+        font-weight: 700;
+        letter-spacing: -2px;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+      .site-title span { color: var(--green); text-shadow: 2px 2px 0 var(--black); }
+      .site-sub {
+        margin-top: 10px;
+        font-size: 12px;
+        letter-spacing: 3px;
+        color: #555;
+        text-transform: uppercase;
+      }
+      nav {
+        margin-top: 18px;
+        display: flex;
+        gap: 0;
+        flex-wrap: wrap;
+      }
+      nav a {
+        display: inline-block;
+        border: 2px solid var(--black);
+        padding: 6px 16px;
+        text-decoration: none;
+        color: var(--black);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-right: -2px;
+        transition: background 0.1s, color 0.1s;
+      }
+      nav a:hover { background: var(--black); color: var(--white); }
+      nav a.launch {
+        background: var(--black);
+        color: var(--green);
+        margin-left: 20px;
+        margin-right: 0;
+      }
+      nav a.launch:hover { background: var(--green); color: var(--black); }
+
+      /* ── INTRO STRIP ── */
+      .intro {
+        border-bottom: 2px solid var(--black);
+        padding: 18px 40px;
+        background: var(--black);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+      .intro-text {
+        font-size: 15px;
+        letter-spacing: 1px;
+      }
+      .intro-text strong { color: var(--green); }
+      .counter {
+        margin-left: auto;
+        font-size: 40px;
+        font-weight: 700;
+        color: var(--green);
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .counter span { font-size: 13px; color: #888; display: block; text-align: right; }
+
+      /* ── GRID ── */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 0;
+        border-left: 2px solid var(--black);
+        border-top: 2px solid var(--black);
+      }
+      .card {
+        border-right: 2px solid var(--black);
+        border-bottom: 2px solid var(--black);
+        cursor: pointer;
+        text-decoration: none;
+        color: var(--black);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.1s;
+        position: relative;
+        overflow: hidden;
+      }
+      .card:hover { z-index: 2; }
+      .card:hover .thumb { filter: invert(1); }
+      .card:hover .card-body { background: var(--black); color: var(--white); }
+
+      .thumb {
+        width: 100%;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        font-weight: 700;
+        transition: filter 0.15s;
+        overflow: hidden;
+        position: relative;
+      }
+      .thumb-num {
+        position: absolute;
+        bottom: 8px;
+        right: 10px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        opacity: 0.4;
+      }
+
+      .card-body {
+        padding: 12px 14px;
+        border-top: 2px solid var(--black);
+        flex: 1;
+        transition: background 0.1s, color 0.1s;
+      }
+      .card-day {
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: #888;
+        margin-bottom: 4px;
+      }
+      .card-title {
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 1.3;
+      }
+      .card-link {
+        margin-top: 8px;
+        font-size: 10px;
+        letter-spacing: 2px;
+        opacity: 0.5;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        border-top: 3px solid var(--black);
+        padding: 24px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #888;
+      }
+      footer strong { color: var(--black); }
+
+      /* ── MODAL OVERLAY (OS mode) ── */
+      #os-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #000;
+      }
+      #os-overlay.active { display: flex; flex-direction: column; }
+      #os-close {
+        position: fixed;
+        top: 10px;
+        right: 16px;
+        z-index: 10001;
+        background: transparent;
+        color: #00ff41;
+        border: 1px solid #00ff41;
+        font-family: "Fira Code", monospace;
+        font-size: 13px;
+        padding: 4px 12px;
+        cursor: pointer;
+      }
+      #os-frame {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
   </head>
   <body>
-    <div id="boot-screen" class="boot-screen">
-      <div class="boot-center">
-        <button id="power-btn">⏻</button>
-        <p id="boot-status">SYSTEM_IDLE // PRESS_TO_START</p>
+
+    <header>
+      <div class="site-title">GENUARY<span>_</span>2026</div>
+      <div class="site-sub">Raphael Parone &mdash; 31 jours de code génératif &mdash; Janvier 2026</div>
+      <nav>
+        <a href="about.html">About</a>
+        <a href="project.html">Project</a>
+        <a href="qr.html">QR Code</a>
+        <a href="#" class="launch" onclick="launchOS(event)">&#9654; Launch OS</a>
+      </nav>
+    </header>
+
+    <div class="intro">
+      <div class="intro-text">
+        <strong>Genuary</strong> est un événement mondial où des artistes créent<br />
+        une œuvre générée par code chaque jour de janvier.<br />
+        Chaque jour, une contrainte. Chaque sketch, une exploration.
       </div>
-      <div id="bios-logs" class="bios-logs"></div>
+      <div class="counter">31<span>sketches</span></div>
     </div>
 
-    <div id="pc-container" class="pc-container">
-      <canvas id="matrix-canvas"></canvas>
-      <div class="scanlines"></div>
+    <main class="grid" id="grid"></main>
 
-      <div class="desktop" id="desktop">
-        <div class="taskbar">
-          <div class="start-menu-btn">SYSTEM</div>
-          <div class="system-tray"><span id="clock">00:00:00</span></div>
-        </div>
+    <footer>
+      <div><strong>Raphael Parone</strong> &mdash; Genuary 2026</div>
+      <div>Code génératif &mdash; p5.js &amp; GLSL</div>
+    </footer>
 
-        <div class="desktop-icons">
-          <div class="icon" data-type="explorer">
-            <div class="icon-visual folder"></div>
-            <span class="icon-label">GENUARY_FILES</span>
-          </div>
-          <div class="icon" data-type="ai">
-            <div class="icon-visual agent"></div>
-            <span class="icon-label">CRITICAL_AI</span>
-          </div>
-          <div class="icon" data-type="about">
-            <div class="icon-visual notepad"></div>
-            <span class="icon-label">ABOUT.exe</span>
-          </div>
-          <div class="icon" data-type="project">
-            <div class="icon-visual folder" style="background:#ff6fb7;"></div>
-            <span class="icon-label">PROJECT.exe</span>
-          </div>
-          <div class="icon" data-type="qr">
-            <div class="icon-visual notepad" style="background:#00ffff;"></div>
-            <span class="icon-label">QR_CODE.exe</span>
-          </div>
-        </div>
-      </div>
+    <!-- OS OVERLAY -->
+    <div id="os-overlay">
+      <button id="os-close" onclick="closeOS()">✕ CLOSE</button>
+      <iframe id="os-frame" src="os.html"></iframe>
     </div>
 
-    <template id="window-template">
-      <div class="window">
-        <div class="window-header">
-          <span class="window-title"></span>
-          <div class="window-controls">
-            <button class="win-btn close-btn">[X]</button>
-          </div>
-        </div>
-        <div class="window-body"></div>
-        <div class="resizer"></div>
-      </div>
-    </template>
+    <script>
+      const sketches = [
+        { day: 1,  title: "One Color\nOne Shape",      slug: "day-01-one-color-one-shape",        bg: "#ff6fb7", fg: "#050505" },
+        { day: 2,  title: "Twelve\nPrinciples",        slug: "day-02-twelve-principles",           bg: "#f5e642", fg: "#111" },
+        { day: 3,  title: "Fibonacci\nForever",         slug: "day-03-fibonacci-forever",           bg: "#1a47ff", fg: "#f5e642" },
+        { day: 4,  title: "Low\nRes",                  slug: "day-04-lowres",                      bg: "#0a0a0a", fg: "#00ff41" },
+        { day: 5,  title: "Write\nGenuary",            slug: "day-05-write-genuary",               bg: "#f5f5f0", fg: "#0a0a0a" },
+        { day: 6,  title: "Lights\nOn/Off",            slug: "day-06-lights-on-off",               bg: "#ff3300", fg: "#fff" },
+        { day: 7,  title: "Boolean\nAlgebra",          slug: "day-07-boolean-algebra",             bg: "#0a0a0a", fg: "#f5f5f0" },
+        { day: 8,  title: "A\nCity",                   slug: "day-08-a-city",                      bg: "#888", fg: "#f5f5f0" },
+        { day: 9,  title: "Crazy\nAutomaton",          slug: "day-09-crazy-automaton",             bg: "#00ff41", fg: "#0a0a0a" },
+        { day: 10, title: "Polar\nCoordinates",        slug: "day-10-polar-coordinates",           bg: "#1a47ff", fg: "#fff" },
+        { day: 11, title: "Quine",                     slug: "day-11-quine",                       bg: "#f5e642", fg: "#0a0a0a" },
+        { day: 12, title: "Boxes\nOnly",               slug: "day-12-boxes-only",                  bg: "#ff6fb7", fg: "#0a0a0a" },
+        { day: 13, title: "Self\nPortrait",            slug: "day-13-self-portrait",               bg: "#0a0a0a", fg: "#ff6fb7" },
+        { day: 14, title: "Everything\nFits",          slug: "day-14-everything-fits",             bg: "#f5f5f0", fg: "#1a47ff" },
+        { day: 15, title: "Invisible\nObject",         slug: "day-15-invisible-object",            bg: "#f5f5f0", fg: "#eee" },
+        { day: 16, title: "Order &\nDisorder",         slug: "day-16-order-and-disorder",          bg: "#1a47ff", fg: "#f5e642" },
+        { day: 17, title: "Wallpaper\nGroup",          slug: "day-17-wallpaper-group",             bg: "#ff3300", fg: "#f5e642" },
+        { day: 18, title: "Unexpected\nPath",          slug: "day-18-unexpected-path",             bg: "#00ff41", fg: "#0a0a0a" },
+        { day: 19, title: "16×16",                     slug: "day-19-16x16",                       bg: "#0a0a0a", fg: "#f5f5f0" },
+        { day: 20, title: "One\nLine",                 slug: "day-20-one-line",                    bg: "#f5f5f0", fg: "#0a0a0a" },
+        { day: 21, title: "Bauhaus\nPoster",           slug: "day-21-bauhaus-poster",              bg: "#ff3300", fg: "#f5e642" },
+        { day: 22, title: "Pen Plotter\nReady",        slug: "day-22-pen-plotter-ready",           bg: "#f5f5f0", fg: "#0a0a0a" },
+        { day: 23, title: "Trans-\nparency",           slug: "day-23-transparency",                bg: "#1a47ff", fg: "rgba(255,255,255,0.4)" },
+        { day: 24, title: "Perfectionist's\nNightmare",slug: "day-24-perfectionists-nightmare",    bg: "#ff6fb7", fg: "#f5e642" },
+        { day: 25, title: "Organic\nGeometry",         slug: "day-25-organic-geometry",            bg: "#00ff41", fg: "#0a0a0a" },
+        { day: 26, title: "Recursive\nGrids",          slug: "day-26-recursive-grids",             bg: "#0a0a0a", fg: "#f5f5f0" },
+        { day: 27, title: "Life-\nform",               slug: "day-27-lifeform",                    bg: "#1a47ff", fg: "#00ff41" },
+        { day: 28, title: "No\nLibraries",             slug: "day-28-no-libraries",                bg: "#f5e642", fg: "#1a47ff" },
+        { day: 29, title: "Genetic\nEvolution",        slug: "day-29-genetic-evolution",           bg: "#ff3300", fg: "#0a0a0a" },
+        { day: 30, title: "It's Not\na Bug",           slug: "day-30-its-not-a-bug",               bg: "#00ff41", fg: "#ff3300" },
+        { day: 31, title: "GLSL\nDay",                 slug: "day-31-glsl-day",                    bg: "#0a0a0a", fg: "#00ff41" },
+      ];
 
-    <script src="index.js"></script>
+      const grid = document.getElementById("grid");
+      sketches.forEach(s => {
+        const a = document.createElement("a");
+        a.className = "card";
+        a.href = `./${s.slug}/index.html`;
+        a.target = "_blank";
+
+        const lines = s.title.split("\n");
+        const label = lines.map(l => `<tspan x="50%" dy="${lines.indexOf(l) === 0 ? '0' : '1.2em'}">${l}</tspan>`).join("");
+
+        a.innerHTML = `
+          <div class="thumb" style="background:${s.bg}; color:${s.fg};">
+            <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                font-family="Fira Code, monospace" font-weight="700" font-size="28"
+                fill="${s.fg}">${label}</text>
+            </svg>
+            <div class="thumb-num">DAY ${String(s.day).padStart(2,'0')}</div>
+          </div>
+          <div class="card-body">
+            <div class="card-day">DAY ${String(s.day).padStart(2,'0')} // GENUARY_2026</div>
+            <div class="card-title">${lines.join(" ")}</div>
+            <div class="card-link">OPEN SKETCH →</div>
+          </div>`;
+        grid.appendChild(a);
+      });
+
+      function launchOS(e) {
+        e.preventDefault();
+        document.getElementById("os-overlay").classList.add("active");
+      }
+      function closeOS() {
+        document.getElementById("os-overlay").classList.remove("active");
+      }
+    </script>
   </body>
 </html>

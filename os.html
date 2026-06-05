@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAINFRAME_OS_v5.0</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="boot-screen" class="boot-screen">
+      <div class="boot-center">
+        <button id="power-btn">⏻</button>
+        <p id="boot-status">SYSTEM_IDLE // PRESS_TO_START</p>
+      </div>
+      <div id="bios-logs" class="bios-logs"></div>
+    </div>
+
+    <div id="pc-container" class="pc-container">
+      <canvas id="matrix-canvas"></canvas>
+      <div class="scanlines"></div>
+
+      <div class="desktop" id="desktop">
+        <div class="taskbar">
+          <div class="start-menu-btn">SYSTEM</div>
+          <div class="system-tray"><span id="clock">00:00:00</span></div>
+        </div>
+
+        <div class="desktop-icons">
+          <div class="icon" data-type="explorer">
+            <div class="icon-visual folder"></div>
+            <span class="icon-label">GENUARY_FILES</span>
+          </div>
+          <div class="icon" data-type="ai">
+            <div class="icon-visual agent"></div>
+            <span class="icon-label">CRITICAL_AI</span>
+          </div>
+          <div class="icon" data-type="about">
+            <div class="icon-visual notepad"></div>
+            <span class="icon-label">ABOUT.exe</span>
+          </div>
+          <div class="icon" data-type="project">
+            <div class="icon-visual folder" style="background:#ff6fb7;"></div>
+            <span class="icon-label">PROJECT.exe</span>
+          </div>
+          <div class="icon" data-type="qr">
+            <div class="icon-visual notepad" style="background:#00ffff;"></div>
+            <span class="icon-label">QR_CODE.exe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <template id="window-template">
+      <div class="window">
+        <div class="window-header">
+          <span class="window-title"></span>
+          <div class="window-controls">
+            <button class="win-btn close-btn">[X]</button>
+          </div>
+        </div>
+        <div class="window-body"></div>
+        <div class="resizer"></div>
+      </div>
+    </template>
+
+    <script src="index.js"></script>
+  </body>
+</html>
