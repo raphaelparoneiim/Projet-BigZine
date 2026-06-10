@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BIG ZINE — Raphael Parone — Genuary 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+      :root {
+        --black: #0a0a0a;
+        --white: #f5f5f0;
+        --green: #00ff41;
+        --pink: #ff6fb7;
+        --yellow: #f5e642;
+        --blue: #1a47ff;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        background: #ccc;
+        font-family: "Fira Code", monospace;
+      }
+
+      /* Screen preview bar */
+      .screen-bar {
+        background: var(--black);
+        color: var(--green);
+        padding: 12px 24px;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .screen-bar a {
+        color: var(--black);
+        background: var(--green);
+        padding: 4px 14px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 11px;
+        letter-spacing: 1px;
+      }
+      .screen-bar a:hover { background: #fff; }
+
+      /* Pages wrapper */
+      .pages {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        gap: 20px;
+      }
+
+      /* Individual page — A5 at 96dpi ≈ 559×794px */
+      .page {
+        width: 559px;
+        height: 794px;
+        background: var(--white);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 4px 4px 0 #333;
+      }
+
+      .page-label {
+        position: absolute;
+        top: -22px;
+        left: 0;
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: #555;
+        text-transform: uppercase;
+      }
+
+      /* ── PAGE 1: COVER ── */
+      .cover {
+        background: var(--black);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 40px;
+      }
+      .cover-title {
+        color: var(--green);
+        font-size: 72px;
+        font-weight: 700;
+        line-height: 0.9;
+        letter-spacing: -3px;
+        text-transform: uppercase;
+      }
+      .cover-title span { color: var(--white); }
+      .cover-year {
+        color: var(--green);
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 8px;
+        margin-top: 12px;
+        text-transform: uppercase;
+      }
+      .cover-mid {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cover-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 3px;
+        width: 420px;
+        height: 210px;
+      }
+      .cover-cell {
+        background: var(--green);
+        opacity: 0.15;
+      }
+      .cover-cell:nth-child(3n) { background: var(--pink); opacity: 0.2; }
+      .cover-cell:nth-child(5n) { background: var(--yellow); opacity: 0.25; }
+      .cover-cell:nth-child(7n) { background: var(--blue); opacity: 0.2; }
+      .cover-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .cover-name {
+        color: var(--white);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+      .cover-subtitle {
+        color: #555;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-align: right;
+        line-height: 1.8;
+      }
+
+      /* ── PAGE 2: ABOUT ME ── */
+      .about {
+        background: #000;
+        color: var(--green);
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .term-header {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        border-bottom: 1px solid var(--green);
+        padding-bottom: 12px;
+        margin-bottom: 28px;
+        text-transform: uppercase;
+      }
+      .term-field { margin-bottom: 18px; }
+      .term-label {
+        font-size: 10px;
+        color: #555;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      .term-value {
+        color: var(--green);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+      .term-value strong { color: #fff; }
+      .ascii-art {
+        font-size: 8px;
+        line-height: 1.2;
+        color: #003300;
+        margin-bottom: 20px;
+        white-space: pre;
+      }
+      .blink { animation: blink 1s step-end infinite; }
+      @keyframes blink { 50% { opacity: 0; } }
+
+      /* ── PAGE 3: PROJECT ── */
+      .project-page {
+        background: #000;
+        color: var(--green);
+        padding: 40px;
+      }
+      .day-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+        margin-top: 12px;
+      }
+      .day-box {
+        border: 1px solid #003300;
+        padding: 4px 6px;
+        font-size: 9px;
+        color: #00aa22;
+        line-height: 1.4;
+      }
+      .day-box .num { color: #555; font-size: 8px; }
+      .bar { height: 1px; background: #003300; margin: 16px 0; }
+      .tech-tag {
+        display: inline-block;
+        border: 1px solid #003300;
+        padding: 2px 6px;
+        font-size: 9px;
+        margin: 2px 2px 2px 0;
+        color: #00aa22;
+      }
+
+      /* ── PAGE 4: QR ── */
+      .qr-page {
+        background: #000;
+        color: var(--green);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 40px;
+      }
+      .qr-title {
+        font-size: 16px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .qr-box {
+        padding: 12px;
+        background: #fff;
+      }
+      .qr-url {
+        font-size: 10px;
+        color: #555;
+        word-break: break-all;
+        text-align: center;
+        max-width: 280px;
+        line-height: 1.6;
+      }
+      .qr-name {
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: #888;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      /* ── PAGE 5: VECTOR ── */
+      .vector-page {
+        background: var(--white);
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+      }
+      .vector-header {
+        background: var(--black);
+        color: var(--green);
+        padding: 12px 20px;
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+      }
+      .vector-body {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .vector-body img,
+      .vector-body object {
+        max-width: 100%;
+        max-height: 660px;
+      }
+      .vector-footer {
+        background: var(--black);
+        color: #555;
+        padding: 8px 20px;
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      /* ── RASTER IMAGE PAGES ── */
+      .raster-page {
+        background: var(--black);
+        display: flex;
+        flex-direction: column;
+      }
+      .raster-header {
+        background: var(--black);
+        color: var(--green);
+        padding: 10px 20px;
+        font-size: 9px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #111;
+      }
+      .raster-body {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .raster-body img {
+        max-width: 100%;
+        max-height: 720px;
+        object-fit: contain;
+        display: block;
+      }
+      .raster-footer {
+        color: #333;
+        padding: 8px 20px;
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid #111;
+      }
+
+      /* ── BACK COVER ── */
+      .back-cover {
+        background: var(--black);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 40px;
+      }
+      .back-cover .big-num {
+        color: var(--green);
+        font-size: 120px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -5px;
+        opacity: 0.15;
+      }
+      .back-cover .back-text {
+        color: #333;
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 1.9;
+      }
+      .back-cover .back-name {
+        color: var(--white);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        border-top: 1px solid #222;
+        border-bottom: 1px solid #222;
+        padding: 10px 30px;
+      }
+
+      /* ── PRINT ── */
+      @media print {
+        .screen-bar { display: none !important; }
+        body { background: white; }
+        .pages { padding: 0; gap: 0; }
+        .page {
+          width: 148mm;
+          height: 210mm;
+          page-break-after: always;
+          box-shadow: none;
+          margin: 0;
+        }
+        .page-label { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="screen-bar">
+      <span>BIG ZINE — GENUARY 2026 — RAPHAEL PARONE — 16 PAGES</span>
+      <a href="#" onclick="window.print(); return false;">IMPRIMER / PRINT</a>
+      <a href="index.html">← RETOUR AU SITE</a>
+    </div>
+
+    <div class="pages">
+
+      <!-- PAGE 1 : COUVERTURE -->
+      <div class="page cover">
+        <div class="page-label">Page 1 — Couverture</div>
+        <div>
+          <div class="cover-title">BIG<span>_</span><br />ZINE</div>
+          <div class="cover-year">2026</div>
+        </div>
+        <div class="cover-mid">
+          <div class="cover-grid" id="cover-grid"></div>
+        </div>
+        <div class="cover-bottom">
+          <div>
+            <div class="cover-name">Raphael Parone</div>
+          </div>
+          <div class="cover-subtitle">
+            Genuary 2026<br />
+            Code génératif<br />
+            31 jours · 31 sketches
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE 2 : ABOUT ME -->
+      <div class="page about">
+        <div class="page-label">Page 2 — About Me</div>
+        <pre class="ascii-art">
+ ██████╗  █████╗ ██████╗ ██╗  ██╗
+ ██╔══██╗██╔══██╗██╔══██╗██║  ██║
+ ██████╔╝███████║██████╔╝███████║
+ ██╔══██╗██╔══██║██╔═══╝ ██╔══██║
+ ██║  ██║██║  ██║██║     ██║  ██║
+ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝</pre>
+        <div class="term-header">// ABOUT_ME.txt</div>
+
+        <div class="term-field">
+          <div class="term-label">nom // name</div>
+          <div class="term-value"><strong>Raphael Parone</strong></div>
+        </div>
+        <div class="term-field">
+          <div class="term-label">statut // status</div>
+          <div class="term-value">Étudiant en design numérique &amp; arts génératifs</div>
+        </div>
+        <div class="term-field">
+          <div class="term-label">intérêts // interests</div>
+          <div class="term-value">
+            → Code créatif &amp; generative art<br />
+            → Design graphique &amp; typographie<br />
+            → Interaction &amp; expériences web<br />
+            → Impression et édition artisanale
+          </div>
+        </div>
+        <div class="term-field">
+          <div class="term-label">outils // tools</div>
+          <div class="term-value">p5.js · GLSL · HTML/CSS/JS · Inkscape</div>
+        </div>
+        <div class="term-field">
+          <div class="term-label">contact</div>
+          <div class="term-value">rparone2@gmail.com</div>
+        </div>
+        <br />
+        <div class="term-value" style="color:#555; font-size:11px;">
+          Genuary 2026 — 31 jours, 31 projets génératifs.<br />
+          Chaque jour, une contrainte. Chaque sketch, une exploration<span class="blink">_</span>
+        </div>
+      </div>
+
+      <!-- PAGE 3 : ABOUT THE PROJECT -->
+      <div class="page project-page">
+        <div class="page-label">Page 3 — About the Project</div>
+        <div class="term-header">// PROJET_GENUARY_2026.txt</div>
+
+        <div style="color:#888; font-size:10px; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px;">description</div>
+        <p style="color:var(--green); font-size:11px; line-height:1.7; margin-bottom:8px;">
+          Genuary est un événement mondial annuel où des artistes
+          créent une œuvre générée par code chaque jour de janvier.
+          Ce projet regroupe <strong style="color:#fff;">31 sketches p5.js</strong> explorant chacun
+          une contrainte créative unique.
+        </p>
+
+        <div class="bar"></div>
+
+        <div style="color:#888; font-size:10px; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px;">technologies</div>
+        <div style="margin-bottom:14px;">
+          <span class="tech-tag">p5.js</span>
+          <span class="tech-tag">GLSL / WebGL</span>
+          <span class="tech-tag">HTML5 Canvas</span>
+          <span class="tech-tag">JavaScript ES6</span>
+          <span class="tech-tag">CSS3</span>
+        </div>
+
+        <div class="bar"></div>
+
+        <div style="color:#888; font-size:10px; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px;">les 31 jours</div>
+        <div class="day-grid">
+          <div class="day-box"><span class="num">01</span><br />One Color One Shape</div>
+          <div class="day-box"><span class="num">02</span><br />Twelve Principles</div>
+          <div class="day-box"><span class="num">03</span><br />Fibonacci Forever</div>
+          <div class="day-box"><span class="num">04</span><br />Low Res</div>
+          <div class="day-box"><span class="num">05</span><br />Write Genuary</div>
+          <div class="day-box"><span class="num">06</span><br />Lights On/Off</div>
+          <div class="day-box"><span class="num">07</span><br />Boolean Algebra</div>
+          <div class="day-box"><span class="num">08</span><br />A City</div>
+          <div class="day-box"><span class="num">09</span><br />Crazy Automaton</div>
+          <div class="day-box"><span class="num">10</span><br />Polar Coordinates</div>
+          <div class="day-box"><span class="num">11</span><br />Quine</div>
+          <div class="day-box"><span class="num">12</span><br />Boxes Only</div>
+          <div class="day-box"><span class="num">13</span><br />Self Portrait</div>
+          <div class="day-box"><span class="num">14</span><br />Everything Fits</div>
+          <div class="day-box"><span class="num">15</span><br />Invisible Object</div>
+          <div class="day-box"><span class="num">16</span><br />Order &amp; Disorder</div>
+          <div class="day-box"><span class="num">17</span><br />Wallpaper Group</div>
+          <div class="day-box"><span class="num">18</span><br />Unexpected Path</div>
+          <div class="day-box"><span class="num">19</span><br />16×16</div>
+          <div class="day-box"><span class="num">20</span><br />One Line</div>
+          <div class="day-box"><span class="num">21</span><br />Bauhaus Poster</div>
+          <div class="day-box"><span class="num">22</span><br />Pen Plotter Ready</div>
+          <div class="day-box"><span class="num">23</span><br />Transparency</div>
+          <div class="day-box"><span class="num">24</span><br />Perfectionist's Nightmare</div>
+          <div class="day-box"><span class="num">25</span><br />Organic Geometry</div>
+          <div class="day-box"><span class="num">26</span><br />Recursive Grids</div>
+          <div class="day-box"><span class="num">27</span><br />Lifeform</div>
+          <div class="day-box"><span class="num">28</span><br />No Libraries</div>
+          <div class="day-box"><span class="num">29</span><br />Genetic Evolution</div>
+          <div class="day-box"><span class="num">30</span><br />It's Not a Bug</div>
+          <div class="day-box"><span class="num">31</span><br />GLSL Day</div>
+        </div>
+
+        <div class="bar"></div>
+        <div style="color:#444; font-size:9px; letter-spacing:1px;">Auteur: Raphael Parone · Cours de design numérique 2026</div>
+      </div>
+
+      <!-- PAGE 4 : QR CODE -->
+      <div class="page qr-page">
+        <div class="page-label">Page 4 — QR Code</div>
+        <div class="qr-title">// LIVE_SITE.exe</div>
+        <div style="color:#555; font-size:10px; letter-spacing:2px; text-transform:uppercase;">Scanner pour accéder au site</div>
+        <div class="qr-box" id="qrcode-zine"></div>
+        <div class="qr-url" id="qr-url-text"></div>
+        <div class="qr-name">Raphael Parone — Genuary 2026<span class="blink">_</span></div>
+      </div>
+
+      <!-- PAGE 5 : DESSIN VECTORIEL (cours 1) -->
+      <div class="page vector-page">
+        <div class="page-label">Page 5 — Dessin vectoriel</div>
+        <div class="vector-header">
+          <span>// VECTOR_DRAWING.svg</span>
+          <span>Cours 1 — Style géométrique</span>
+        </div>
+        <div class="vector-body">
+          <img src="zine-print/vector-cours1.svg" alt="Dessin vectoriel géométrique — cours 1" />
+        </div>
+        <div class="vector-footer">
+          <span>Raphael Parone</span>
+          <span>Dessin vectoriel — Inkscape</span>
+        </div>
+      </div>
+
+      <!-- PAGES 6–15 : 10 IMAGES RASTER -->
+      <div class="page raster-page">
+        <div class="page-label">Page 6</div>
+        <div class="raster-header">
+          <span>Raphael Parone — Genuary 2026</span>
+          <span>Image 01 / 10</span>
+        </div>
+        <div class="raster-body">
+          <img src="zine-print/NOUVEAU_DESSIN_GEOMETRIQUE_1.png" alt="Dessin géométrique 1" />
+        </div>
+        <div class="raster-footer">
+          <span>Dessin génératif #1</span>
+          <span>p5.js</span>
+        </div>
+      </div>
+
+      <div class="page raster-page">
+        <div class="page-label">Page 7</div>
+        <div class="raster-header">
+          <span>Raphael Parone — Genuary 2026</span>
+          <span>Image 02 / 10</span>
+        </div>
+        <div class="raster-body">
+          <img src="zine-print/NOUVEAU_DESSIN_GEOMETRIQUE_50.png" alt="Dessin géométrique 50" />
+        </div>
+        <div class="raster-footer">
+          <span>Dessin génératif #2</span>
+          <span>p5.js</span>
+        </div>
+      </div>
+
+      <div class="page raster-page">
+        <div class="page-label">Page 8</div>
+        <div class="raster-header">
+          <span>Raphael Parone — Genuary 2026</span>
+          <span>Image 03 / 10</span>
+        </div>
+        <div class="raster-body">
+          <img src="zine-print/NOUVEAU_DESSIN_GEOMETRIQUE_75.png" alt="Dessin géométrique 75" />
+        </div>
+        <div class="raster-footer">
+          <span>Dessin génératif #3</span>
+          <span>p5.js</span>
+        </div>
+      </div>
+
+      <div class="page raster-page">
+        <div class="page-label">Page 9</div>
+        <div class="raster-header">
+          <span>Raphael Parone — Genuary 2026</span>
+          <span>Image 04 / 10</span>
+        </div>
+        <div class="raster-body">
+          <img src="zine-print/NOUVEAU_DESSIN_GEOMETRIQUE_100.png" alt="Dessin géométrique 100" />
+        </div>
+        <div class="raster-footer">
+          <span>Dessin génératif #4</span>
+          <span>p5.js</span>
+        </div>
+      </div>
+
+      <div class="page raster-page">
+        <div class="page-label">Page 10</div>
+        <div class="raster-header">
+          <span>Raphael Parone — Genuary 2026</span>
+          <span>Image 05 / 10</span>
+        </div>
+        <div class="raster-body">
+          <img src="zine-print/NOUVEAU_DESSIN_GEOMETRIQUE_150.png" alt="Dessin géométrique 150" />
+        </div>
+        <div class="raster-footer">
+          <span>Dessin génératif #5</span>
+          <span>p5.js</span>
+        </div>
+      </div>
+
+      <div class="page raster-page">
+        <div class="page-label">Page 11</div>
+        <div class="raster-header">
+          <span>Raphael Parone — Genuary 2026</span>
+          <span>Image 06 / 10</span>
+        </div>
+        <div class="raster-body">
+          <img src="zine-print/NOUVEAU_DESSIN_GEOMETRIQUE_200.png" alt="Dessin géométrique 200" />
+        </div>
+        <div class="raster-footer">
+          <span>Dessin génératif #6</span>
+          <span>p5.js</span>
+        </div>
+      </div>
+
+      <div class="page raster-page">
+        <div class="page-label">Page 12</div>
+        <div class="raster-header">
+          <span>Raphael Parone — Genuary 2026</span>
+          <span>Image 07 / 10</span>
+        </div>
+        <div class="raster-body">
+          <img src="zine-print/NOUVEAU_DESSIN_GEOMETRIQUE_250.png" alt="Dessin géométrique 250" />
+        </div>
+        <div class="raster-footer">
+          <span>Dessin génératif #7</span>
+          <span>p5.js</span>
+        </div>
+      </div>
+
+      <div class="page raster-page">
+        <div class="page-label">Page 13</div>
+        <div class="raster-header">
+          <span>Raphael Parone — Genuary 2026</span>
+          <span>Image 08 / 10</span>
+        </div>
+        <div class="raster-body">
+          <img src="zine-print/DESSIN_GEOMETRIQUE_59_NOUVEAU_FOND_JAUNE.png" alt="Dessin géométrique fond jaune" />
+        </div>
+        <div class="raster-footer">
+          <span>Dessin génératif #8</span>
+          <span>p5.js</span>
+        </div>
+      </div>
+
+      <div class="page raster-page">
+        <div class="page-label">Page 14</div>
+        <div class="raster-header">
+          <span>Raphael Parone — Genuary 2026</span>
+          <span>Image 09 / 10</span>
+        </div>
+        <div class="raster-body">
+          <img src="zine-print/DESSIN_GEOMETRIQUE_117_NOUVEAU_FOND_BLEU.png" alt="Dessin géométrique fond bleu" />
+        </div>
+        <div class="raster-footer">
+          <span>Dessin génératif #9</span>
+          <span>p5.js</span>
+        </div>
+      </div>
+
+      <div class="page raster-page">
+        <div class="page-label">Page 15</div>
+        <div class="raster-header">
+          <span>Raphael Parone — Genuary 2026</span>
+          <span>Image 10 / 10</span>
+        </div>
+        <div class="raster-body">
+          <img src="zine-print/DESSIN_GEOMETRIQUE_277_NOUVEAU_FOND_JAUNE.png" alt="Dessin géométrique fond jaune 2" />
+        </div>
+        <div class="raster-footer">
+          <span>Dessin génératif #10</span>
+          <span>p5.js</span>
+        </div>
+      </div>
+
+      <!-- PAGE 16 : DOS DE COUVERTURE -->
+      <div class="page back-cover">
+        <div class="page-label">Page 16 — Dos de couverture</div>
+        <div class="big-num">31</div>
+        <div class="back-name">Raphael Parone</div>
+        <div class="back-text">
+          Genuary 2026<br />
+          31 jours · 31 sketches génératifs<br />
+          Code créatif · p5.js · GLSL<br />
+          <br />
+          raphaelparoneiim.github.io/Projet-BigZine
+        </div>
+      </div>
+
+    </div><!-- .pages -->
+
+    <script>
+      // Cover grid animation
+      const grid = document.getElementById("cover-grid");
+      for (let i = 0; i < 32; i++) {
+        const cell = document.createElement("div");
+        cell.className = "cover-cell";
+        grid.appendChild(cell);
+      }
+
+      // QR code
+      const siteUrl = "https://raphaelparoneiim.github.io/Projet-BigZine/";
+      document.getElementById("qr-url-text").textContent = siteUrl;
+      new QRCode(document.getElementById("qrcode-zine"), {
+        text: siteUrl,
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H,
+      });
+    </script>
+  </body>
+</html>
